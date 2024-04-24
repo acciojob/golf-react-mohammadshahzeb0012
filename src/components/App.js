@@ -5,7 +5,6 @@ import "./App.css";
 
 const App = () => {
 
-
   const [showBall, setShowBall] = useState(false)
   const [ballPosition, setBallPosition] = useState(0);
   console.log(ballPosition)
@@ -26,15 +25,20 @@ const App = () => {
     setShowBall(true)
   }
 
+  const renderBallOrButton = () => {
+    if (showBall) {
+      return <div className="ball"
+        style={{ left: ballPosition + 'px', }}
+      >ball</div>
+    } else {
+      return <button onClick={startHandel} className='start'>start</button>
+    }
+  }
+
 
   return (
     <div className="playground">
-      {showBall && <div className="ball"
-        style={{ left: ballPosition + 'px', }}
-      >ball</div>}
-
-      {!showBall && <button onClick={startHandel} className='start'>start</button>
-      }
+      {renderBallOrButton()}
     </div>
   )
 }
